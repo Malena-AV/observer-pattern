@@ -48,5 +48,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\observer-pattern\Библиотека.csproj">
+      <Project>{5f5619eb-c32e-45a3-9014-bd022a7de108}</Project>
+      <Name>Библиотека</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
