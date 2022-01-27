@@ -8,7 +8,7 @@ namespace Библиотека
 {
     public class ConcreteSubject : Subject
     {
-        List<ConcreteObserver> observers = new List<ConcreteObserver> { };
+        List<Observer> observers = new List<Observer> { };
         public void NotifyObservers()//уведомить
         {
             for (int i = 0; i < observers.Count; i++)
@@ -17,12 +17,12 @@ namespace Библиотека
             }
         }
 
-        public void RegisterObserver(ConcreteObserver a)//зарегистрировать
+        public void RegisterObserver(Observer a)//зарегистрировать
         {
             observers.Add(a);
         }
 
-        public void RemoveObserver(ConcreteObserver a)//удалить
+        public void RemoveObserver(Observer a)//удалить
         {
             observers.Remove(a);
         }

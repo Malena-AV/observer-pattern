@@ -8,8 +8,8 @@ namespace Библиотека
 {
     public interface Subject
     {
-        void RegisterObserver(ConcreteObserver a);
-        void RemoveObserver(ConcreteObserver a);
+        void RegisterObserver(Observer a);
+        void RemoveObserver(Observer a);
         void NotifyObservers();
 
     }
