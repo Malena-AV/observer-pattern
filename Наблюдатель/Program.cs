@@ -11,25 +11,9 @@ namespace Наблюдатель
     {
         static void Main(string[] args)
         {
-            ConcreteSubject Sub = new ConcreteSubject();
-            ConcreteObserver Obs1 = new ConcreteObserver();
-            ConcreteObserver Obs2 = new ConcreteObserver();
+            WeatherData Sub = new WeatherData();
+            CurrentConditionsDisplay Obs1 = new CurrentConditionsDisplay(Sub);
 
-            Sub.RegisterObserver(Obs1);
-            Sub.State = "aa";
-            Console.WriteLine(Obs1.Counter);
-            Console.WriteLine(Obs2.Counter);
-
-            Sub.RegisterObserver(Obs2);
-            Sub.State = "bb";
-            Console.WriteLine(Obs1.Counter);
-            Console.WriteLine(Obs2.Counter);
-
-            Sub.RemoveObserver(Obs2);
-            Sub.State = "cc";
-            Console.WriteLine(Obs1.Counter);
-            Console.WriteLine(Obs2.Counter);
-            Console.ReadKey();
         }
     }
 }

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Библиотека
 {
-    public interface Observer
+    interface DisplayElement
     {
-        void Update(float temp, float humidity, float pressure);
+        string Display();
     }
 }
