@@ -45,7 +45,6 @@
     <Compile Include="Классы\CurrentConditionsDisplay.cs" />
     <Compile Include="Классы\ForecastDisplay.cs" />
     <Compile Include="Классы\StatisticsDisplay.cs" />
-    <Compile Include="Классы\ThirdPartyDisplay.cs" />
     <Compile Include="Классы\WeatherData.cs" />
     <Compile Include="Интерфейсы\Observer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

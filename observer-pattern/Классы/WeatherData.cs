@@ -8,9 +8,19 @@ namespace Библиотека
 {
     public class WeatherData : Subject
     {
-        private float temp;
-        private float humidity;
-        private float pressure;
+        float temp;
+        float humidity;
+        float pressure;
+        float maxtemp;
+        float srtemp;
+        float mintemp;
+        float maxhum;
+        float srhum;
+        float minhum;
+        float maxpr;
+        float srpr;
+        float minpr;
+
         List<Observer> observers = new List<Observer> { };
         public WeatherData()
         {
@@ -20,14 +30,8 @@ namespace Библиотека
         {
             for (int i = 0; i < observers.Count; i++)
             {
-               observers[i].Update(temp, humidity, pressure);
+               observers[i].Update(temp, humidity, pressure, maxtemp, srtemp, mintemp, maxhum, srhum, minhum, maxpr, srpr, minpr);
             }
-        }
-        List<WeatherData> temper = new List<WeatherData> { };
-        public void PlusTemp(float a)
-        {
-                
-
         }
 
         public void RegisterObserver(Observer a)
@@ -51,21 +55,49 @@ namespace Библиотека
             MeasurementsChanged();
         }
 
-        public float GetTemperature(float a)
+        public void CurrentTemperature(float temper)
         {
-            temp = a;
-            return temp;
+            temp = temper;
         }
-        public float GetHumidity(float a)
+        public void CurrentHumidity(float hum)
         {
-            humidity = a;
-            return humidity;
+            humidity = hum;
         }
-        public float GetPressure(float a)
+        public void CurrentPressure(float press)
         {
-            pressure = a;
-            return pressure;
+            pressure = press;
         }
+        public void StatisticTemperature(float max, float sr, float min)
+        {
+            maxtemp = max;
+            srtemp = sr;
+            mintemp = min;
+        }
+        public void StatisticHumidity(float max, float sr, float min)
+        {
+            maxtemp = max;
+            srtemp = sr;
+            mintemp = min;
+        }
+        public void StatisticPressure(float max, float sr, float min)
+        {
+            maxtemp = max;
+            srtemp = sr;
+            mintemp = min;
+        }
+        public void ForecasTemperature(float temper)
+        {
+            temp = temper;
+        }
+        public void ForecasHumidity(float hum)
+        {
+            humidity = hum;
+        }
+        public void ForecasPressure(float press)
+        {
+            pressure = press;
+        }
+
         public void MeasurementsChanged()
         {
             NotifyObservers();

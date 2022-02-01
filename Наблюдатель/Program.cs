@@ -12,7 +12,18 @@ namespace Наблюдатель
         static void Main(string[] args)
         {
             WeatherData Sub = new WeatherData();
-            CurrentConditionsDisplay Obs1 = new CurrentConditionsDisplay(Sub);
+
+            ForecastDisplay fd = new ForecastDisplay();
+            Sub.RegisterObserver(fd);
+            Console.WriteLine(fd.Display());
+            CurrentConditionsDisplay cd = new CurrentConditionsDisplay();
+            Sub.RegisterObserver(cd);
+            Console.WriteLine(cd.Display());
+            CurrentConditionsDisplay cd = new CurrentConditionsDisplay();
+            Sub.RegisterObserver(cd);
+            Console.WriteLine(cd.Display());
+            Console.ReadKey();
+
 
         }
     }

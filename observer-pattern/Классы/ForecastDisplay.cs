@@ -6,20 +6,41 @@ using System.Threading.Tasks;
 
 namespace Библиотека
 {
-    class ForecastDisplay: Observer, DisplayElement
+    public class ForecastDisplay: Observer, DisplayElement
     {
-        private float temp;
+        private float temper;
         private float humidity;
         private float pressure;
-        private Subject WeatherData;
 
-        public void Update(float temp, float humidity, float pressure)
+
+        public void Update(float temp, float humidity, float pressure, float maxtemp, float srtemp, float mintemp, float maxhum, float srhum, float minhum, float maxpr, float srpr, float minpr)
         {
-
+            this.temper = temp;
+            this.humidity = humidity;
+            this.pressure = pressure;
         }
+
+       private void ProgTemp()
+        {
+            Random x = new Random();
+            temper = x.Next(-100, 100);
+        }
+        private void ProgHum()
+        {
+            Random x = new Random();
+            humidity = x.Next(-100, 100);
+        }
+        private void ProgPreg()
+        {
+            Random x = new Random();
+            temper = x.Next(-100, 100);
+        }
+
         public string Display()
         {
-            return "dfrg";
+            return "прогноз температуры: " + temper +
+                   "прогноз влажности: " + humidity +
+                   "прогноз давления: " + pressure;
         }
     }
 }
