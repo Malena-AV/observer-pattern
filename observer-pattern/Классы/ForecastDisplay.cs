@@ -8,39 +8,38 @@ namespace Библиотека
 {
     public class ForecastDisplay: Observer, DisplayElement
     {
-        private float temper;
-        private float humidity;
-        private float pressure;
+        double Ftemper;
+        double Fhumidity;
+        double Fpressure;
 
-
-        public void Update(float temp, float humidity, float pressure, float maxtemp, float srtemp, float mintemp, float maxhum, float srhum, float minhum, float maxpr, float srpr, float minpr)
+        public void Update(double forecastemper, double forecashumidity, double forecaspressure, double temp, double humidity, double pressure, double maxtemp, double srtemp, double mintemp, double maxhum, double srhum, double minhum, double maxpr, double srpr, double minpr)
         {
-            this.temper = temp;
-            this.humidity = humidity;
-            this.pressure = pressure;
+            Ftemper = forecastemper;
+            Fhumidity = forecashumidity;
+            Fpressure = forecaspressure;
         }
 
-       private void ProgTemp()
+        private void ProgTemp()
         {
             Random x = new Random();
-            temper = x.Next(-100, 100);
+            Ftemper = x.Next(-100, 100);
         }
         private void ProgHum()
         {
             Random x = new Random();
-            humidity = x.Next(-100, 100);
+            Fhumidity = x.Next(-100, 100);
         }
         private void ProgPreg()
         {
-            Random x = new Random();
-            temper = x.Next(-100, 100);
+            Random y = new Random();
+            Fpressure = y.Next(-100, 100);
         }
 
         public string Display()
         {
-            return "прогноз температуры: " + temper +
-                   "прогноз влажности: " + humidity +
-                   "прогноз давления: " + pressure;
+            return "прогноз температуры: " + Ftemper +
+                   "прогноз влажности: " + Fhumidity +
+                   "прогноз давления: " + Fpressure;
         }
     }
 }

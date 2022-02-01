@@ -13,15 +13,24 @@ namespace Наблюдатель
         {
             WeatherData Sub = new WeatherData();
 
+            CurrentConditionsDisplay cd = new CurrentConditionsDisplay();
+            StatisticsDisplay sd = new StatisticsDisplay();
             ForecastDisplay fd = new ForecastDisplay();
+           
+            Sub.RegisterObserver(cd);
+            Sub.RegisterObserver(sd);
             Sub.RegisterObserver(fd);
+
+            Sub.CurrentTemperature(23);
+            Sub.CurrentTemperature(100);
+            Sub.CurrentHumidity(900);
+            Sub.CurrentHumidity(500);
+
+            Console.WriteLine(cd.Display());
+            Console.WriteLine(sd.Display());
             Console.WriteLine(fd.Display());
-            CurrentConditionsDisplay cd = new CurrentConditionsDisplay();
-            Sub.RegisterObserver(cd);
-            Console.WriteLine(cd.Display());
-            CurrentConditionsDisplay cd = new CurrentConditionsDisplay();
-            Sub.RegisterObserver(cd);
-            Console.WriteLine(cd.Display());
+
+
             Console.ReadKey();
 
 

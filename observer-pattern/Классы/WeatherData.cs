@@ -8,18 +8,21 @@ namespace Библиотека
 {
     public class WeatherData : Subject
     {
-        float temp;
-        float humidity;
-        float pressure;
-        float maxtemp;
-        float srtemp;
-        float mintemp;
-        float maxhum;
-        float srhum;
-        float minhum;
-        float maxpr;
-        float srpr;
-        float minpr;
+        double temper;
+        double humidity;
+        double pressure;
+        double maxtemp;
+        double srtemp;
+        double mintemp;
+        double maxhum;
+        double srhum;
+        double minhum;
+        double maxpr;
+        double srpr;
+        double minpr;
+        double forecastemper;
+        double forecashumidity;
+        double forecaspressure;
 
         List<Observer> observers = new List<Observer> { };
         public WeatherData()
@@ -30,7 +33,7 @@ namespace Библиотека
         {
             for (int i = 0; i < observers.Count; i++)
             {
-               observers[i].Update(temp, humidity, pressure, maxtemp, srtemp, mintemp, maxhum, srhum, minhum, maxpr, srpr, minpr);
+               observers[i].Update(temper, humidity, pressure, maxtemp, srtemp, mintemp, maxhum, srhum, minhum, maxpr, srpr, minpr, forecastemper, forecashumidity, forecaspressure);
             }
         }
 
@@ -47,57 +50,62 @@ namespace Библиотека
                 observers.Remove(a);
             }
         }
-        public void Measurements(float temperature, float humidity, float pressure)
+
+        public void CurrentTemperature(double temper)
         {
-            this.temp = temperature;
+            this.temper = temper;
+            StatisticsDisplay statistics = new StatisticsDisplay();
+            statistics.Temp(temper);
+            MeasurementsChanged();
+        }
+        public void CurrentHumidity(double humidity)
+        {
             this.humidity = humidity;
+            StatisticsDisplay statistics = new StatisticsDisplay();
+            statistics.Humidity(humidity);
+            MeasurementsChanged();
+        }
+        public void CurrentPressure(double pressure)
+        {
             this.pressure = pressure;
+            StatisticsDisplay statistics = new StatisticsDisplay();
+            statistics.Pressyre(pressure);
             MeasurementsChanged();
         }
 
-        public void CurrentTemperature(float temper)
-        {
-            temp = temper;
-        }
-        public void CurrentHumidity(float hum)
-        {
-            humidity = hum;
-        }
-        public void CurrentPressure(float press)
-        {
-            pressure = press;
-        }
-        public void StatisticTemperature(float max, float sr, float min)
-        {
-            maxtemp = max;
-            srtemp = sr;
-            mintemp = min;
-        }
-        public void StatisticHumidity(float max, float sr, float min)
-        {
-            maxtemp = max;
-            srtemp = sr;
-            mintemp = min;
-        }
-        public void StatisticPressure(float max, float sr, float min)
-        {
-            maxtemp = max;
-            srtemp = sr;
-            mintemp = min;
-        }
-        public void ForecasTemperature(float temper)
-        {
-            temp = temper;
-        }
-        public void ForecasHumidity(float hum)
-        {
-            humidity = hum;
-        }
-        public void ForecasPressure(float press)
-        {
-            pressure = press;
-        }
-
+        //public void StatisticTemperature(double max, double sr, double min)
+        //{
+        //    maxtemp = max;
+        //    srtemp = sr;
+        //    mintemp = min;
+        //}
+        //public void StatisticHumidity(double max, double sr, double min)
+        //{
+        //    maxhum = max;
+        //    srhum = sr;
+        //    minhum = min;
+        //}
+        //public void StatisticPressure(double max, double sr, double min)
+        //{
+        //    maxpr = max;
+        //    srpr = sr;
+        //    minpr = min;
+        //}
+        //public void ForecasTemperature(double temper)
+        //{
+        //    forecastemper = temper;
+        //    MeasurementsChanged();
+        //}
+        //public void ForecasHumidity(double hum)
+        //{
+        //    forecashumidity = hum;
+        //    MeasurementsChanged();
+        //}
+        //public void ForecasPressure(double press)
+        //{
+        //    forecaspressure = press;
+        //    MeasurementsChanged();
+        //}
         public void MeasurementsChanged()
         {
             NotifyObservers();

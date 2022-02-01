@@ -8,78 +8,85 @@ namespace Библиотека
 {
     public class StatisticsDisplay: Observer, DisplayElement
     {
-        float maxtemp;
-        float srtemp;
-        float mintemp;
-        float maxhum;
-        float srhum;
-        float minhum;
-        float maxpr;
-        float srpr;
-        float minpr;
 
-        public void Update(float temp, float humidity, float pressure, float maxtemp, float srtemp, float mintemp, float maxhum, float srhum, float minhum, float maxpr, float srpr, float minpr)
+        double Smaxtemp;
+        double Ssrtemp;
+        double Smintemp;
+        double Smaxhum;
+        double Ssrhum;
+        double Sminhum;
+        double Smaxpr;
+        double Ssrpr;
+        double Sminpr;
+
+        public void Update(double forecastemper, double forecashumidity, double forecaspressure, double temp, double humidity, double pressure, double maxtemp, double srtemp, double mintemp, double maxhum, double srhum, double minhum, double maxpr, double srpr, double minpr)
         {
-            this.maxtemp = maxtemp;
-            this.srtemp = srtemp;
-            this.mintemp = mintemp;
-            this.maxhum = maxhum;
-            this.srhum = srhum;
-            this.minhum = minhum;
-            this.maxpr = maxpr;
-            this.srpr = srpr;
-            this.minpr = minpr;
+            Smaxtemp = maxtemp;
+            Ssrtemp = srtemp;
+            Smintemp = mintemp;
+            Smaxhum = maxhum;
+            Ssrhum = srhum;
+            Sminhum = minhum;
+            Smaxpr = maxpr;
+            Ssrpr = srpr;
+            Sminpr = minpr;
+
         }
 
-        readonly List<float> temp = new List<float> { 12, 4, 32 };
-        public void Temp()
+        readonly List<double> temp = new List<double> {};
+        public void Temp(double t)
         {
-            float sum = 0;
+            double sum = 0;
             for (int i = 0; i < temp.Count; i++)
             {
-               maxtemp = temp.Max();
-               mintemp = temp.Min();
+               temp.Add(t);
+               Smaxtemp = temp.Max();
+               Smintemp = temp.Min();
                sum+= temp[i];
             }
-            srtemp = (sum / temp.Count);
+            Ssrtemp = (sum / temp.Count);
         }
 
-        readonly List<float> humidity = new List<float> { 50, 290, 62 };
-        public void Humidity()
+        readonly List<double> Lhumidity = new List<double> {};
+        public void Humidity (double h)
         {
-            float sum = 0;
-            for (int i = 0; i < humidity.Count; i++)
+            double sum = 0;
+            for (int i = 0; i < Lhumidity.Count; i++)
             {
-                maxhum = humidity.Max();
-                minhum = humidity.Min();
-                sum += humidity[i];
+                Lhumidity.Add(h);
+                Smaxhum = Lhumidity.Max();
+                Sminhum = Lhumidity.Min();
+                sum += Lhumidity[i];
             }
-            srtemp = (sum / humidity.Count);
+            Ssrhum = (sum / Lhumidity.Count);
         }
 
-        readonly List<float> pressure = new List<float> { 9, 45, 81 };
-        public void Pressyre()
+        readonly List<double> Lpressure = new List<double> {};
+        public void Pressyre(double p)
         {
-            float sum = 0;
-            for (int i = 0; i < pressure.Count; i++)
+            double sum = 0;
+            for (int i = 0; i < Lpressure.Count; i++)
             {
-                maxpr = pressure.Max();
-                minpr = pressure.Min();
-                sum += pressure[i];
+                Lpressure.Add(p);
+                Smaxpr = Lpressure.Max();
+                Sminpr = Lpressure.Min();
+                sum += Lpressure[i];
             }
-            srtemp = (sum / pressure.Count);
+            Ssrpr = (sum / Lpressure.Count);
         }
+
         public string Display()
         {
-            return "макимальная температура" + maxtemp +
-                   "средняя температура" + srtemp +
-                   "минимальнаяя температура" + mintemp + 
-                   "максимальная влажность" + maxhum +
-                   "средняя влажность" + srhum +
-                   "минимальная влажность" + minhum +
-                   "максимальное давление" +  maxpr +
-                   "среднее давление" + srpr +
-                   "минимальное давление" + minpr; ;
+            return "макимальная температура " + Smaxtemp +
+                   "\nсредняя температура " + Ssrtemp +
+                   "\nминимальнаяя температура " + Smintemp +
+                   "\nминимальнаяя температура " + Smintemp +
+                   "\nмаксимальная влажность " + Smaxhum +
+                   "\nсредняя влажность " + Ssrhum +
+                   "\nминимальная влажность " + Sminhum +
+                   "\nмаксимальное давление " +  Smaxpr +
+                   "\nсреднее давление " + Ssrpr +
+                   "\nминимальное давление " + Sminpr; ;
         }
     }
 }

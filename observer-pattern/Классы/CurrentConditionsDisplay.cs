@@ -8,19 +8,19 @@ namespace Библиотека
 {
     public class CurrentConditionsDisplay : Observer, DisplayElement
     {
-        private float temp;
-        private float humidity;
-        private float pressure;
+        double temper;
+        double humidity;
+        double pressure;
 
-        public void Update(float temp, float humidity, float pressure, float maxtemp, float srtemp, float mintemp, float maxhum, float srhum, float minhum, float maxpr, float srpr, float minpr)
+        public void Update(double forecastemper, double forecashumidity, double forecaspressure, double temp, double humidity, double pressure, double maxtemp, double srtemp, double mintemp, double maxhum, double srhum, double minhum, double maxpr, double srpr, double minpr)
         {
-            this.temp = temp;
+            this.temper = temp;
             this.humidity = humidity;
             this.pressure = pressure;
         }
         public string Display()
         {
-            return "Температура: " + temp + "Влажность: " + humidity + "Давление: " + pressure;
+            return "Температура: " + temper + "Влажность: " + humidity + "Давление: " + pressure;
         }
     }
 }
