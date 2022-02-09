@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace Библиотека
 {
-    public interface Subject
+    interface IDisplayElement
     {
-        void RegisterObserver(Observer a);
-        void RemoveObserver(Observer a);
-        void NotifyObservers();
-
+        string Display();
     }
 }

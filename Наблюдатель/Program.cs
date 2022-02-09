@@ -25,12 +25,16 @@ namespace Наблюдатель
             Sub.CurrentTemperature(100);
             Sub.CurrentHumidity(900);
             Sub.CurrentHumidity(500);
+            Sub.CurrentPressure(740);
 
             Console.WriteLine(cd.Display());
+            Console.WriteLine();
             Console.WriteLine(sd.Display());
+            Console.WriteLine();
             Console.WriteLine(fd.Display());
 
-
+            Sub.RemoveObserver(fd);
+            
             Console.ReadKey();
 
 

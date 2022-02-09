@@ -6,21 +6,22 @@ using System.Threading.Tasks;
 
 namespace Библиотека
 {
-    public class CurrentConditionsDisplay : Observer, DisplayElement
+    public class CurrentConditionsDisplay : IObserver, IDisplayElement
     {
-        double temper;
-        double humidity;
-        double pressure;
+        double currenttemper;
+        double currenthumidity;
+        double currentpressure;
 
-        public void Update(double forecastemper, double forecashumidity, double forecaspressure, double temp, double humidity, double pressure, double maxtemp, double srtemp, double mintemp, double maxhum, double srhum, double minhum, double maxpr, double srpr, double minpr)
+        public void Update(double temp, double humidity, double pressure, double maxtemp, double averagetemp,
+            double mintemp, double maxhum, double averagehum, double minhum, double maxpr, double averagepr, double minpr)
         {
-            this.temper = temp;
-            this.humidity = humidity;
-            this.pressure = pressure;
+            currenttemper = temp;
+            currenthumidity = humidity;
+            currentpressure = pressure;
         }
         public string Display()
         {
-            return "Температура: " + temper + "Влажность: " + humidity + "Давление: " + pressure;
+            return "Температура: " + currenttemper + "\nВлажность: " + currenthumidity + "\nДавление: " + currentpressure;
         }
     }
 }
